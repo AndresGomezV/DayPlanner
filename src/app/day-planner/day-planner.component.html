@@ -1,0 +1,21 @@
+<app-add-task (addTaskEvent)="handleNewTask($event)"></app-add-task>
+
+@for (task of tasks; track task.id) { @if (!task.completed) {
+<div>
+    <button
+        [class.task-button]="true"
+        (click)="selectTask(task)"
+        [appHighlight]="task.isDueToday"
+    >
+        {{ task.name }}: {{ task.time }}, {{ task.time | timeLeft }}
+    </button>
+
+    @if (selectedTask?.id === task.id) {
+    <h2>Task Details</h2>
+    <app-task
+        [task]="selectedTask"
+        (completeTask)="handleCompleteTask(task)"
+    ></app-task>
+    }
+</div>
+} }

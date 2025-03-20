@@ -1,0 +1,6 @@
+@if (task) {
+<div [class.is-due]="true">
+    <p>{{ task.name }} at {{ task.time }}</p>
+    <button (click)="onComplete()">Complete Task</button>
+</div>
+}
